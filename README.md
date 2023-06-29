@@ -76,7 +76,7 @@ Rest assured, we are continuously working to enhance the overall security of you
 ### How to obtain token and store it
 #
 
-Here's a guide to obtain your Discord Token: A Step-by-Step Guide
+### Here's a guide to obtain your Discord Token: A Step-by-Step Guide
 To begin, let's walk through the process of obtaining your Discord token. Follow these steps:
 
 1 .Open Discord in your browser: Launch your preferred web browser and access Discord's web application. ᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼
@@ -88,3 +88,6 @@ To begin, let's walk through the process of obtaining your Discord token. Follow
 4. Paste the Command: In the console, paste the following command: ``console.log(window.localStorage.token)`` . Press Enter to execute the command.
 
 5. Retrieve Your Token: Upon executing the command, your Discord token will be displayed in the console. Copy the token from the output.
+
+### How to store your Discord Token:
+Tutorial here: https://youtube.com/shorts/XAs14rlLmnY?feature=share

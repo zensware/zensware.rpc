@@ -4,9 +4,12 @@ A Discord RPC (Rich Presence) is a prominent feature of the Discord API designed
 ![image](https://cdn.discordapp.com/attachments/1121661789042655283/1123381334392455299/RPC-Transparent.png)
 <div align="center">
 
+
 # Why did we make ZenithRPC?
 We have developed this application to cater to individuals who are interested in promoting their work on Discord. The application boasts a wide range of functionalities, making it an interactive platform that can be fully customized to suit your needs. This level of customization allows for endless possibilities in sharing your creations with a global audience.
 
+## Inspiration from MrNekrozyYT
+#### I would of probably never made this if it wasn't for Nekrozy's main RPC and I take major part of that source code and have redesigned it from there on and added other features to it since his version
 
 ## Zenith's Key Application Features
  Zenith incorporates advanced functionalities to meet the diverse needs of its users, providing an enhanced and versatile experience.

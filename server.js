@@ -1,15 +1,19 @@
-from flask import Flask, send_file
-from threading import Thread
+const express = require('express');
+const path = require('path');
+const app = express();
 
-app = Flask(__name__)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Website', 'index.html'));
+});
 
-@app.route('/')
-def home():
-    return send_file('Website/index.html')
+function run() {
+    app.listen(8080, '0.0.0.0', () => {
+        console.log('Zenith is now hosting!');
+    });
+}
 
-def run():
-    app.run(host='0.0.0.0', port=8080)
+function keepAlive() {
+    run();
+}
 
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
+keepAlive();

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>Discord Remote Procedure Call (RPC)</h2>
+<h2>ZenithRPC
+  
 <p>Discord RPC (Rich Presence) is a feature of the Discord API for developers. It allows detailed presence information to be displayed to users. This showcases personalized details about activities, status, and interactions within Discord or gaming.</p>
 <img src="https://cdn.discordapp.com/attachments/1121661789042655283/1123381334392455299/RPC-Transparent.png" alt="RPC Example" style="display: block; margin: 0 auto;">
 <div style="text-align: center;">

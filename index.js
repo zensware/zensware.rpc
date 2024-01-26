@@ -51,15 +51,15 @@ client.on('ready', async () => {
 
   const r = new Discord.RichPresence()
     .setApplicationId('1023269983922442373')
-    .setType('LISTENING') //Choosable options: STREAMING, PLAYING, LISTENING.
+    .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING.
     .setURL('https://twitch.tv/username'
-    .setState('text')
-    .setName('title')
-    .setDetails('title')
+    .setState('Creating stuff...')
+    .setName('zensware')
+    .setDetails('Free time Developer')
     .setStartTimestamp(Date.now())
-    .setAssetsLargeImage('image-url')
-    .setAssetsLargeText('image-text')
-    .setAssetsSmallImage('image-url')
+    .setAssetsLargeImage('https://cdn.discordapp.com/attachments/1188394668405293146/1200465754244534332/e3bca3aa6bafbcee63cab2d8f09dac90.jpg?ex=65c647db&is=65b3d2db&hm=d083e838b128086d530ee7bf2ab1ef80512557c8270d97e51fe8e629fea52e88&')
+    .setAssetsLargeText(null)
+    .setAssetsSmallImage(null)
     .setAssetsSmallText('image-text')
     .addButton('button 1', 'https://link.com/')
     .addButton('button 2', 'https://link.com/');

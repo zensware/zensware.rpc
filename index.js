@@ -48,19 +48,19 @@ client.on('ready', async () => {
   };
 
   const r = new Discord.RichPresence()
-    .setApplicationId('Your Application ID') // You can either create or find your application here: https://discord.com/developers/applications
+    .setApplicationId('1023269983922442373') // You can either create or find your application here: https://discord.com/developers/applications
     .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING, WATCHING & COMPETING
-    .setURL('https://twitch.tv/username')
-    .setState('Blank')
-    .setName('Blank')
-    .setDetails('Blank')
+    .setURL('https://twitch.tv/zensware')
+    .setState('zensware')
+    .setName('zensware')
+    .setDetails(null) // Just add values if you'd like.
     .setStartTimestamp(Date.now())
-    .setAssetsLargeImage('https://media.discordapp.net/attachments/1206955445940658287/1213784658345730088/zenith-grey.png?ex=66126b8d&is=65fff68d&hm=bbcb272ceba5a39e8e372fb14c5cc8f44c4efa7da714462ff0106c1b50a88798&=&format=webp&quality=lossless&width=600&height=450')
-    .setAssetsLargeText('Large-Image-Text')
-    .setAssetsSmallImage('Small-Image-Link')
-    .setAssetsSmallText('Small-Image-Text')
-    .addButton('button 1', 'https://link.com/')
-    .addButton('button 2', 'https://link.com/');
+    .setAssetsLargeImage('https://media.discordapp.net/attachments/1206955445940658287/1223590584963432559/e6161b3e1c2b6b737a47522fdf4b2d36-1328298384.gif?ex=661a6888&is=6607f388&hm=5a1cb58276bf5a60685435e827f683eb7c232af1c1e6fd1ecec4815cefad1787&=&width=545&height=559')
+    .setAssetsLargeText(null) // Just add values if you'd like.
+    .setAssetsSmallImage(null) // Just add values if you'd like.
+    .setAssetsSmallText(null) // Just add values if you'd like.
+    .addButton('Github Repo', 'https://github.com/ZensDK/ZenithRPC')
+    .addButton('Discord', 'https://discord.gg/Xwp8WyZfX2');
 
   const updatePresenceAndActivity = () => {
     updatePresence();

@@ -1,19 +1,6 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+var http = require('http');
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Website', 'index.html'));
-});
-
-function run() {
-    app.listen(8080, '0.0.0.0', () => {
-        console.log('Zenith is now hosting!');
-    });
-}
-
-function keepAlive() {
-    run();
-}
-
-keepAlive();
+http.createServer(function (req, res) {
+  res.write("ZenithRPC is now online!");
+  res.end();
+}).listen(8080);

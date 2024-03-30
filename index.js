@@ -51,7 +51,7 @@ client.on('ready', async () => {
     .setApplicationId('1023269983922442373') // You can either create or find your application here: https://discord.com/developers/applications
     .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING, WATCHING & COMPETING
     .setURL('https://twitch.tv/zensware')
-    .setState('zensware')
+    .setState(null)
     .setName('zensware')
     .setDetails(null) // Just add values if you'd like.
     .setStartTimestamp(Date.now())

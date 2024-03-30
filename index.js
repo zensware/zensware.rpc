@@ -4,28 +4,26 @@ const client = new Discord.Client({
   checkUpdate: false
 });
 
-const keepAlive = require('./server.js');
-keepAlive();
-
-const webhookId = 'Webhook-ID';
-const webhookToken = 'Webhook-Token';
+const Authorization_Token = process.env.Authorization_Token;
+const Webhook_ID = process.env.Webhook_ID;
+const Webhook_Token = process.env.Webhook_Token;
 
 client.on('ready', async () => {
   console.clear();
-  console.log(`${client.user.tag} - ZenithRPC has connected to Dsicord!`);
+  console.log(`ZenithRPC has connected to Discord Client: ${client.user.tag}`);
 
   const updatePresence = () => {
     const embed = new Discord.MessageEmbed()
       .setColor('#545759')
-      .setTitle('ZenithRPC | Updater')
-      .setDescription('**Zenith** are proud to announce their new client updating feature to check your uptime from your phone.')
+      .setTitle('ZenithRPC | Webhook Logs')
+      .setDescription('Our recent update has included "Render.com" hosting with our old functionalities.')
       .addField('Discord Client:', client.user.tag, true)
       .addField('Client Uptime:', calculateUptime(), true)
-      .setThumbnail(client.user.displayAvatarURL())
+      .setThumbnail("https://media.discordapp.net/attachments/1206955445940658287/1223021688971591770/zenith-grey.png?ex=661856b5&is=6605e1b5&hm=0c0699c469634dda8ce20ceb6d31d5cfd8e62005aafe78acae73edae47a3b530&=&format=webp&quality=lossless&width=600&height=450")
       .setFooter('・Developer: zensware   ', client.user.displayAvatarURL())
       .setTimestamp();
 
-    const webhookClient = new Discord.WebhookClient({ id: webhookId, token: webhookToken });
+    const webhookClient = new Discord.WebhookClient({ id: Webhook_ID, token: Webhook_Token });
     webhookClient.send({ embeds: [embed] })
       .then(() => {
         console.log('Embed sent successfully!');
@@ -50,20 +48,20 @@ client.on('ready', async () => {
   };
 
   const r = new Discord.RichPresence()
-    .setApplicationId('1023269983922442373')
-    .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING.
-    .setURL('https://twitch.tv/username'
-    .setState('Creating stuff...')
-    .setName('zensware')
-    .setDetails('Free time Developer')
+    .setApplicationId('Your Application ID') // You can either create or find your application here: https://discord.com/developers/applications
+    .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING, WATCHING & COMPETING
+    .setURL('https://twitch.tv/username')
+    .setState('Blank')
+    .setName('Blank')
+    .setDetails('Blank')
     .setStartTimestamp(Date.now())
-    .setAssetsLargeImage('https://cdn.discordapp.com/attachments/1188394668405293146/1200465754244534332/e3bca3aa6bafbcee63cab2d8f09dac90.jpg?ex=65c647db&is=65b3d2db&hm=d083e838b128086d530ee7bf2ab1ef80512557c8270d97e51fe8e629fea52e88&')
-    .setAssetsLargeText(null)
-    .setAssetsSmallImage(null)
-    .setAssetsSmallText('image-text')
+    .setAssetsLargeImage('https://media.discordapp.net/attachments/1206955445940658287/1213784658345730088/zenith-grey.png?ex=66126b8d&is=65fff68d&hm=bbcb272ceba5a39e8e372fb14c5cc8f44c4efa7da714462ff0106c1b50a88798&=&format=webp&quality=lossless&width=600&height=450')
+    .setAssetsLargeText('Large-Image-Text')
+    .setAssetsSmallImage('Small-Image-Link')
+    .setAssetsSmallText('Small-Image-Text')
     .addButton('button 1', 'https://link.com/')
     .addButton('button 2', 'https://link.com/');
-  
+
   const updatePresenceAndActivity = () => {
     updatePresence();
     client.user.setActivity(r);
@@ -72,4 +70,4 @@ client.on('ready', async () => {
   setInterval(updatePresenceAndActivity, 30000);
   client.user.setPresence({ status: "idle" });
 });
-client.login(process.env.TOKEN);
+client.login(Authorization_Token);

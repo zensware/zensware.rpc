@@ -3,4 +3,4 @@ var http = require('http');
 http.createServer(function (req, res) {
   res.write("ZenithRPC is now online!");
   res.end();
-}).listen(8080);
+}).listen(4000);

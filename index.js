@@ -1,8 +1,10 @@
+const express = require('express');
 const Discord = require('discord.js-selfbot-v13');
-const client = new Discord.Client({
-  readyStatus: false,
-  checkUpdate: false
-});
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+const client = new Discord.Client();
 
 const Authorization_Token = process.env.Authorization_Token;
 const Webhook_ID = process.env.Webhook_ID;
@@ -12,7 +14,8 @@ client.on('ready', async () => {
   console.clear();
   console.log(`ZenithRPC has connected to Discord Client: ${client.user.tag}`);
 
-  const updatePresence = () => {
+  // Send a webhook message
+  const sendWebhookMessage = () => {
     const embed = new Discord.MessageEmbed()
       .setColor('#545759')
       .setTitle('ZenithRPC | Webhook Logs')
@@ -31,6 +34,7 @@ client.on('ready', async () => {
       .catch(console.error);
   };
 
+  // Calculate uptime
   const calculateUptime = () => {
     const currentTime = Date.now();
     const uptime = currentTime - client.readyAt;
@@ -38,6 +42,7 @@ client.on('ready', async () => {
     return formattedUptime;
   };
 
+  // Format milliseconds
   const formatMilliseconds = (milliseconds) => {
     const seconds = Math.floor((milliseconds / 1000) % 60);
     const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
@@ -47,27 +52,41 @@ client.on('ready', async () => {
     return `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
   };
 
-  const r = new Discord.RichPresence()
-    .setApplicationId('1023269983922442373') // You can either create or find your application here: https://discord.com/developers/applications
-    .setType('STREAMING') //Choosable options: STREAMING, PLAYING, LISTENING, WATCHING & COMPETING
-    .setURL('https://twitch.tv/zensware')
-    .setState(null)
-    .setName('zensware')
-    .setDetails(null) // Just add values if you'd like.
-    .setStartTimestamp(Date.now())
-    .setAssetsLargeImage('https://media.discordapp.net/attachments/1206955445940658287/1223590584963432559/e6161b3e1c2b6b737a47522fdf4b2d36-1328298384.gif?ex=661a6888&is=6607f388&hm=5a1cb58276bf5a60685435e827f683eb7c232af1c1e6fd1ecec4815cefad1787&=&width=545&height=559')
-    .setAssetsLargeText(null) // Just add values if you'd like.
-    .setAssetsSmallImage(null) // Just add values if you'd like.
-    .setAssetsSmallText(null) // Just add values if you'd like.
-    .addButton('Github Repo', 'https://github.com/ZensDK/ZenithRPC')
-    .addButton('Discord', 'https://discord.gg/Xwp8WyZfX2');
-
+  // Update presence and activity
   const updatePresenceAndActivity = () => {
-    updatePresence();
+    sendWebhookMessage();
+    const r = new Discord.RichPresence()
+      .setApplicationId('1023269983922442373')
+      .setType('STREAMING')
+      .setURL('https://twitch.tv/zensware')
+      .setState(null)
+      .setName('zensware')
+      .setDetails(null)
+      .setStartTimestamp(Date.now())
+      .setAssetsLargeImage('https://media.discordapp.net/attachments/1206955445940658287/1223590584963432559/e6161b3e1c2b6b737a47522fdf4b2d36-1328298384.gif?ex=661a6888&is=6607f388&hm=5a1cb58276bf5a60685435e827f683eb7c232af1c1e6fd1ecec4815cefad1787&=&width=545&height=559')
+      .setAssetsLargeText(null)
+      .setAssetsSmallImage(null)
+      .setAssetsSmallText(null)
+      .addButton('Github Repo', 'https://github.com/ZensDK/ZenithRPC')
+      .addButton('Discord', 'https://discord.gg/Xwp8WyZfX2');
     client.user.setActivity(r);
   };
+
   updatePresenceAndActivity();
   setInterval(updatePresenceAndActivity, 30000);
   client.user.setPresence({ status: "idle" });
 });
-client.login(Authorization_Token);
+
+client.login(Authorization_Token).then(() => {
+  console.log('Bot is logged in!');
+}).catch((error) => {
+  console.error('Error logging in:', error);
+});
+
+app.get('/', (req, res) => {
+  res.send('ZenithRPC is running!');
+});
+
+app.listen(port, () => {
+  console.log(`Express server is running on port ${port}`);
+});

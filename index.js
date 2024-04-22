@@ -77,6 +77,8 @@ client.on('ready', async () => {
   client.user.setPresence({ status: "idle" });
 });
 
+client.login(Authorization_Token);
+
 app.get('/', (req, res) => {
   res.send('ZenithRPC is running!');
 });

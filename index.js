@@ -10,7 +10,7 @@ const Authorization_Token = process.env.Authorization_Token;
 const Webhook_ID = process.env.Webhook_ID;
 const Webhook_Token = process.env.Webhook_Token;
 
-let Webhook_Support = false; // Variable to control webhook enable/disable
+let Webhook_Support = true; // Variable to control webhook enable/disable
 
 client.on('ready', async () => {
   console.clear();

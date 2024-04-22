@@ -14,7 +14,6 @@ client.on('ready', async () => {
   console.clear();
   console.log(`ZenithRPC has connected to Discord Client: ${client.user.tag}`);
 
-  // Send a webhook message
   const sendWebhookMessage = () => {
     const embed = new Discord.MessageEmbed()
       .setColor('#545759')
@@ -34,15 +33,13 @@ client.on('ready', async () => {
       .catch(console.error);
   };
 
-  // Calculate uptime
   const calculateUptime = () => {
     const currentTime = Date.now();
     const uptime = currentTime - client.readyAt;
     const formattedUptime = formatMilliseconds(uptime);
     return formattedUptime;
   };
-
-  // Format milliseconds
+  
   const formatMilliseconds = (milliseconds) => {
     const seconds = Math.floor((milliseconds / 1000) % 60);
     const minutes = Math.floor((milliseconds / (1000 * 60)) % 60);
@@ -52,12 +49,11 @@ client.on('ready', async () => {
     return `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
   };
 
-  // Update presence and activity
   const updatePresenceAndActivity = () => {
     sendWebhookMessage();
     const r = new Discord.RichPresence()
-      .setApplicationId('1023269983922442373')
-      .setType('STREAMING')
+      .setApplicationId('1023269983922442373') // Please replace all values to your own. If it seems to say null then you could easily replace it with 'text/image-value' 
+      .setType('STREAMING') // Playing, Streaming, Watching, Listening, Competing 
       .setURL('https://twitch.tv/zensware')
       .setState(null)
       .setName('zensware')

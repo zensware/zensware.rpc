@@ -10,27 +10,31 @@ const Authorization_Token = process.env.Authorization_Token;
 const Webhook_ID = process.env.Webhook_ID;
 const Webhook_Token = process.env.Webhook_Token;
 
+let Webhook_Support = false; // Variable to control webhook enable/disable
+
 client.on('ready', async () => {
   console.clear();
   console.log(`ZenithRPC has connected to Discord Client: ${client.user.tag}`);
 
   const sendWebhookMessage = () => {
-    const embed = new Discord.MessageEmbed()
-      .setColor('#545759')
-      .setTitle('ZenithRPC | Webhook Logs')
-      .setDescription('Our recent update has included "Render.com" hosting with our old functionalities.')
-      .addField('Discord Client:', client.user.tag, true)
-      .addField('Client Uptime:', calculateUptime(), true)
-      .setThumbnail("https://media.discordapp.net/attachments/1206955445940658287/1223021688971591770/zenith-grey.png?ex=661856b5&is=6605e1b5&hm=0c0699c469634dda8ce20ceb6d31d5cfd8e62005aafe78acae73edae47a3b530&=&format=webp&quality=lossless&width=600&height=450")
-      .setFooter('・Developer: zensware   ', client.user.displayAvatarURL())
-      .setTimestamp();
+    if (Webhook_Support) {
+      const embed = new Discord.MessageEmbed()
+        .setColor('#545759')
+        .setTitle('ZenithRPC | Webhook Logs')
+        .setDescription('Our recent update has included "Render.com" hosting with our old functionalities.')
+        .addField('Discord Client:', client.user.tag, true)
+        .addField('Client Uptime:', calculateUptime(), true)
+        .setThumbnail("https://media.discordapp.net/attachments/1206955445940658287/1223021688971591770/zenith-grey.png?ex=661856b5&is=6605e1b5&hm=0c0699c469634dda8ce20ceb6d31d5cfd8e62005aafe78acae73edae47a3b530&=&format=webp&quality=lossless&width=600&height=450")
+        .setFooter('・Developer: zensware   ', client.user.displayAvatarURL())
+        .setTimestamp();
 
-    const webhookClient = new Discord.WebhookClient({ id: Webhook_ID, token: Webhook_Token });
-    webhookClient.send({ embeds: [embed] })
-      .then(() => {
-        console.log('Embed sent successfully!');
-      })
-      .catch(console.error);
+      const webhookClient = new Discord.WebhookClient({ id: Webhook_ID, token: Webhook_Token });
+      webhookClient.send({ embeds: [embed] })
+        .then(() => {
+          console.log('Embed sent successfully!');
+        })
+        .catch(console.error);
+    }
   };
 
   const calculateUptime = () => {
@@ -71,12 +75,6 @@ client.on('ready', async () => {
   updatePresenceAndActivity();
   setInterval(updatePresenceAndActivity, 30000);
   client.user.setPresence({ status: "idle" });
-});
-
-client.login(Authorization_Token).then(() => {
-  console.log('Bot is logged in!');
-}).catch((error) => {
-  console.error('Error logging in:', error);
 });
 
 app.get('/', (req, res) => {

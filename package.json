@@ -1,15 +1,16 @@
 {
-  "name": "zenithrpc-discord-selfbot",
+  "name": "zensware.rpc",
   "version": "1.0.0",
-  "description": "A Discord selfbot for displaying rich presence using ZenithRPC.",
+  "description": "A Discord selfbot for displaying rich presence using zensware.rpc",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "ZensDK",
+  "author": "zensware",
   "license": "MIT",
   "dependencies": {
-    "discord.js-selfbot-v13": "*",
+    "discord.js-selfbot-v13": "2.10.1",
+    "dotenv": "^16.4.5",
     "express": "^4.17.2"
   }
 }

@@ -1,0 +1,18 @@
+{
+    "applicationId": "Your-Application-ID",
+    "activityType": "STREAMING", 
+    "url": "https://www.twitch.tv/zensware",
+    "state": "state",
+    "name": "name",
+    "details": "details",
+    "largeImage": "image-address",
+    "largeImageText": "image-text",
+    "smallImage": "image-address",
+    "smallImageText": "image-text",
+    "buttons": [
+      {
+        "label": "My portfolio",
+        "url": "https://www.zensware.com/"
+      }
+    ]
+  }
